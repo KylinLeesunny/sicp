@@ -1,0 +1,10 @@
+#lang sicp
+(define (expt b n)
+  (expt-iter b n))
+(define (expt-iter b n)
+  (cond ((= n 0) 1)
+      ((even? n) (squre (expt-iter b (/ n 2))))
+      (else (* b (expt-iter b (- n 1))))))
+(define (squre x)
+  (* x x))
+(expt 2 3)

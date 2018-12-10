@@ -1,0 +1,16 @@
+#lang sicp
+(define (fib n)
+  (define (iter-fib a b n)
+    (cond ((<= n 1) b)
+          (else (iter-fib (+ a b) a (- n 1)))))
+  (iter-fib 1 1 n))
+(define (even-fib n)
+  (define (next k)
+    (if (> k n)
+        nil
+        (let ((f (fib k)))
+          (if (even? f)
+              (cons f (next (+ k 1)))
+              (next (+ k 1))))))
+  (next 0))
+(display (even-fib 9))
